@@ -1,0 +1,9 @@
+void reverse_ll(node* &head,node* &cur,node* &temp){
+    if(cur==NULL){
+        head=ptr;
+        return;
+    }
+    node *for=cur->next;
+    reverse_ll(head,for,cur);
+    cur->next=temp;
+}
