@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+class node{
+  public:
+  int data;
+  node *next;
+  node(int data){
+      this->data=data;
+      this->next=NULL;
+  }
+};
+void insert(node* &head,int data){
+    node* ptr=new node(data);
+    if(head==NULL){
+        head=ptr;
+        return;
+    }
+    ptr->next=head;
+    head=ptr;
+}
+void print(node* &head){
+    node* temp=head;
+    while(temp!=NULL){
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+}
+
+void reverse(node* &head,node* &prev){
+    
+    if(head==NULL||head->next==NULL){
+        prev=head;
+        return;
+    }
+    
+    node* cur=head;
+    node* temp=NULL;
+    
+    while(cur!=NULL){
+        temp=cur->next;
+        cur->next=prev;
+        prev=cur;
+        cur=temp;
+    }
+}
+int main() {
+	// your code goes here
+	node *head=NULL;
+	node* prev=NULL;
+	insert(head,10);
+	insert(head,20);
+	print(head);
+	reverse(head,prev);
+	print(prev);
+	return 0;
+}
