@@ -1,0 +1,37 @@
+node* middle(node* &head){
+    if(head==NULL||head->next==NULL){
+        return head;   
+    }
+    if(head->next->next==NULL){
+        return head->next;
+    }
+    node* slow=head;
+    node* fast=head->next;
+    
+    while(fast!=NULL){
+        fast=fast->next;
+        if(fast!=NULL){
+            fast=fast->next;
+        }
+        slow=slow->next;
+    }
+    
+    return slow;
+}
+int main() {
+	// your code goes here
+	node *head=NULL;
+	node* prev=NULL;
+	insert(head,10);
+	insert(head,20);
+	insert(head,30);
+	insert(head,40);
+	insert(head,50);
+	print(head);
+	//reverse(head,prev);
+	//print(prev);
+	cout<<endl;
+	node* temp=middle(head);
+	cout<<temp->data;
+	return 0;
+}
