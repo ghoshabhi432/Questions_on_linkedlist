@@ -1,0 +1,23 @@
+node* kreverse(node* head,int k){
+    if(head==NULL){
+        return NULL;
+    }
+    node* next=NULL;
+    node* cur=head;
+    node* prev=NULL;
+    int cnt=0;
+    
+    while(cur!=NULL && cnt<k){
+        next=cur->next;
+        cur->next=prev;
+        prev=cur;
+        cur=next;
+        cnt++;
+    }
+    
+    if(next!=NULL){
+        head->next=kreverse(next,k);
+    }
+    
+    return prev;
+}
