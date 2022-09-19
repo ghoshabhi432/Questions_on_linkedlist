@@ -1,0 +1,47 @@
+//using map
+tc: 0(n) , sc: 0(n)
+int detectloop(node* head){
+    if(head==NULL){
+        return 0;
+    }
+    map<node*,bool> mp;
+    node* temp=head;
+    while(temp!=NULL){
+        if(mp[temp]==true){
+            cout<<"loop present in:"<<temp->data<<endl;
+            return 1;
+        }
+        mp[temp]=true;
+        temp=temp->next;
+    }
+    
+    return 0;
+}
+
+//detection using fast and slow
+tc: 0(n) , sc: 0(1)
+
+int floyddetect(node* head){
+    if(head==NULL){
+        return 0;
+    }
+    node* slow=head;
+    node* fast=head;
+    
+    while(fast!=NULL && slow!=NULL){
+        fast=fast->next;
+        if(fast!=NULL){
+            fast=fast->next;
+        }
+        slow=slow->next;
+        if(slow==fast){
+            cout<<"loop present in:"<<slow->data<<endl;
+            return 1;
+        }
+        return 0;
+    }
+    
+    return 0;
+}
+
+
